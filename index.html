@@ -8,20 +8,24 @@
   <body>
     <table>
       <tr>
+        <button id="addTask" type="submit">Add Item</button>
+      </tr>
+      <tr>
         <th>Event name</th>
         <th>Start date</th>
         <th>End date</th>
         <th>Actions</th>
       </tr>
-      <tr>
-        <td>
-          <input disabled value="TEST-3" />
+      <tr id="myTasks">
+        <td id="newTask">
+          <!-- ! added ids to the input fields to allow access in the script -->
+          <input id="newTask" disabled/>
         </td>
-        <td>
-          <input type="date" value="2020-01-08" />
+        <td id="startDate">
+          <input id="startDate" type="date" value="" />
         </td>
-        <td>
-          <input disabled />
+        <td id="endDate">
+          <input id="endDate" type="date" />
         </td>
         <td>
           <button>EDIT</button>
@@ -30,54 +34,6 @@
       </tr>
     </table>
 
-    <script>
-      // Get all Events
-      fetch("http://localhost:3000/events")
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-
-      // Create a new Event
-      fetch("http://localhost:3000/events", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          eventName: "TEST",
-          startDate: "1641790800000",
-          endDate: "1641790800000",
-        }),
-      })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-
-      // Delete an exist Event
-      fetch("http://localhost:3000/events/1", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-
-      //   // Update an exist Event
-      fetch("http://localhost:3000/events/2", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          eventName: "TEST-CHANGED",
-          startDate: "1641790800000",
-          endDate: "1641790800000",
-        }),
-      })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-    </script>
+    <script src="./script.js" />
   </body>
 </html>
