@@ -72,49 +72,49 @@ function addItems(e) {
 
 // ! deleting a post
 // * create a function that takes in an id
-let delBtn = document.getElementById('delItem')
-delBtn.addEventListener('click', () => {
-    // * pass that id into the fetch method using template literals 
-    fetch(`http://localhost:3000/events/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-        },
-    })
-        .then((res) => res.json())
-        .then((json) => {
-            // ! logic to delete the items 
-            // * if the id passed in the function matches with an id of one the posts we will delete that post
-            console.log(json)
-        });
-})
+// let delBtn = document.getElementById('delItem')
+// delBtn.addEventListener('click', () => {
+//     // * pass that id into the fetch method using template literals 
+//     fetch(`http://localhost:3000/events/${id}`, {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             Accept: 'application/json',
+//         },
+//     })
+//         .then((res) => res.json())
+//         .then((json) => {
+//             // ! logic to delete the items 
+//             // * if the id passed in the function matches with an id of one the posts we will delete that post
+//             console.log(json)
+//         });
+// })
 
-// ! updating a post 
-let editBtn = document.getElementById('editItem')
-editBtn.addEventListener('click', () => {
-    // ! getting info from the user 
-    const updatePost = {
-        eventName: '',
-        startDate: '',
-        endDate: ''
-    }
-    // * following the update post route
-    fetch("http://localhost:3000/events/2", {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-        },
-        body: JSON.stringify({
-            eventName: "TEST-CHANGED",
-            startDate: "1641790800000",
-            endDate: "1641790800000",
-        }),
-    })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
-})
+// // ! updating a post 
+// let editBtn = document.getElementById('editItem')
+// editBtn.addEventListener('click', () => {
+//     // ! getting info from the user 
+//     const updatePost = {
+//         eventName: '',
+//         startDate: '',
+//         endDate: ''
+//     }
+//     // * following the update post route
+//     fetch("http://localhost:3000/events/2", {
+//         method: "PUT",
+//         headers: {
+//             "Content-Type": "application/json",
+//             Accept: "application/json",
+//         },
+//         body: JSON.stringify({
+//             eventName: "TEST-CHANGED",
+//             startDate: "1641790800000",
+//             endDate: "1641790800000",
+//         }),
+//     })
+//         .then((response) => response.json())
+//         .then((json) => console.log(json));
+// })
 
 
 

@@ -1,13 +1,55 @@
 /* ! adding basic padding and margin to the page */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* body {
-    font-family: 'Times New Roman', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-} */
+body {
+  font-family: "Times New Roman", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+table {
+  /* * removes borders of internal cells to give it more asthetic look */
+  border-collapse: collapse;
+  /* * sets the border of the adjacent cells to 0 */
+  border-spacing: 0;
+  width: 100%;
+  /* * border description */
+  border: 1px solid #ddd;
+}
+
+/* ! fixed the padding and aligned the text to left */
+th,
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+/* ! made even rows of same color */
+tr:nth-child(even) {
+  background-color: #6fc8eb;
+}
+
+/* ! fixed the button styling */
+button,
+#addTask {
+  background-color: honeydew;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: 2px solid navy;
+}
+
+/* ! fixing the position of the add task button*/
+#addTask {
+  /* * setting the position of the button to top, left and fixed */
+  position: fixed;
+  top: 4px;
+  left: 10px;
+  /* * added margin to the button to place it more in the center */
+  margin: 25px;
+  /* padding: 5px; */
+}
