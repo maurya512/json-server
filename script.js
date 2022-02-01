@@ -20,7 +20,7 @@ function fetchLists() {
                 <td>${json[i].endDate}</td>
                 <td>
                 <button>EDIT</button>
-                <button>DELETE</button>
+                <button class="del">DELETE</button>
                 </td>
                 </tr>
                 `
@@ -31,7 +31,7 @@ function fetchLists() {
 
 // ! a fetch method to add items to the list
 function addItems(e) {
-    // e.preventDefault();
+    e.preventDefault();
 
     let newTask = document.getElementById('newTask').value
     let startDate = document.getElementById('startDate').value
@@ -68,7 +68,25 @@ function addItems(e) {
                 table.innerHTML += row;
             }
         });
+}
 
+// ! deleting a post\
+// * create a function that takes in an id
+function delItem(id) {
+    // * pass that id into the fetch method using template literals 
+    fetch(`http://localhost:3000/events/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        },
+    })
+        .then((res) => res.json())
+        .then((json) => {
+            // ! logic to delete the items 
+            // * if the id passed in the function matches with an id of one the posts we will delete that post
+            console.log(json)
+        });
 }
 // ! adding an eventlistener to laod the posts and call the function to fetch all the items in the lists
 window.addEventListener('load', fetchLists)
