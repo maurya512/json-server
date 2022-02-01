@@ -7,31 +7,33 @@
   </head>
   <body>
     <table>
-      <tr>
-        <button id="addTask" type="submit">Add Item</button>
-      </tr>
-      <tr>
-        <th>Event name</th>
-        <th>Start date</th>
-        <th>End date</th>
-        <th>Actions</th>
-      </tr>
-      <tr id="myTasks">
-        <td>
-          <!-- ! added ids to the input fields to allow access in the script -->
-          <input id="newTask" type="text"/>
-        </td>
-        <td>
-          <input id="startDate" type="date" value="" />
-        </td>
-        <td>
-          <input id="endDate" type="date" />
-        </td>
-        <!-- <td>
-          <button>EDIT</button>
-          <button>DELETE</button>
-        </td> -->
-      </tr>
+      <form id="form" method="post">
+        <tr>
+          <input id="addTask" type="submit" value="Add Item"></input>
+        </tr>
+        <tr>
+          <th>Event name</th>
+          <th>Start date</th>
+          <th>End date</th>
+          <th>Actions</th>
+        </tr>
+        <tr id="myTasks">
+          <td>
+            <!-- ! added ids to the input fields to allow access in the script -->
+            <input id="newTask" type="text"/>
+          </td>
+          <td>
+            <input id="startDate" type="date" value="" />
+          </td>
+          <td>
+            <input id="endDate" type="date" />
+          </td>
+          <!-- <td>
+            <button>EDIT</button>
+            <button>DELETE</button>
+          </td> -->
+        </form>
+        </tr>
       <tbody id="myTable">
         <!-- ! the rendered posts and items will be displayed here -->
       </tbody>

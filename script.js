@@ -29,5 +29,30 @@ function fetchLists() {
         });
 }
 
+// ! a fetch method to add items to the list
+function addItems(e) {
+    e.preventDefault();
+
+    let newTask = document.getElementById('newTask').value
+    let startDate = document.getElementById('startDate').value
+    let endDate = document.getElementById('endDate').value
+
+    fetch("http://localhost:3000/events", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        },
+        body: JSON.stringify({
+            eventName: newTask,
+            startDate: startDate,
+            endDate: endDate
+        }),
+    })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+
+}
 // ! adding an eventlistener to laod the posts and call the function to fetch all the items in the lists
 window.addEventListener('load', fetchLists)
+document.getElementById('form').addEventListener('submit', addItems)
