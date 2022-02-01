@@ -3,12 +3,11 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     font-family: 'Times New Roman', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     overflow: hidden;
-}
-
+} */
