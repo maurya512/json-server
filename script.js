@@ -31,7 +31,7 @@ function fetchLists() {
 
 // ! a fetch method to add items to the list
 function addItems(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     let newTask = document.getElementById('newTask').value
     let startDate = document.getElementById('startDate').value
@@ -50,7 +50,24 @@ function addItems(e) {
         }),
     })
         .then((response) => response.json())
-        .then((json) => console.log(json));
+        .then((json) => {
+            console.log(json)
+            for (var i = 0; i < json.length; i++) {
+                // ! iniatilizing a row and defining elements
+                var row = `
+                <tr>
+                <td>${json[i].eventName}</td>
+                <td>${json[i].startDate}</td>
+                <td>${json[i].endDate}</td>
+                <td>
+                <button>EDIT</button>
+                <button>DELETE</button>
+                </td>
+                </tr>
+                `
+                table.innerHTML += row;
+            }
+        });
 
 }
 // ! adding an eventlistener to laod the posts and call the function to fetch all the items in the lists
