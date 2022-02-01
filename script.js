@@ -1,85 +1,33 @@
-// ! grabbing all the fields from the html file
+// ! the basic method to display all the lists on the page
+function fetchLists() {
 
-let newTask = document.getElementById('newTask').value
-let startDate = document.getElementById('startDate').value
-let endDate = document.getElementById('endDate').value
-let addTask = document.getElementById('addTask');
-let myTable = document.getElementById('myTasks');
+    // * fetching all the posts using fetch api
+    fetch("http://localhost:3000/events")
+        .then((response) => response.json())
+        .then((json) => {
+            // ! logging the data to see if runs into any error
+            console.log(json)
+            // ! initialize the empty table to populate
+            var table = document.getElementById("myTable");
 
-// ! storing the basic url in a variable to allow easy access
-// const url = "http://localhost:3000/events"
+            // ! looping over the json file to dynamically create elements based on the post requirement for all the items in the list
+            for (var i = 0; i < json.length; i++) {
+                // ! iniatilizing a row and defining elements
+                var row = `
+                <tr>
+                <td>${json[i].eventName}</td>
+                <td>${json[i].startDate}</td>
+                <td>${json[i].endDate}</td>
+                <td>
+                <button>EDIT</button>
+                <button>DELETE</button>
+                </td>
+                </tr>
+                `
+                table.innerHTML += row;
+            }
+        });
+}
 
-// * method to get all the tasks and displaying them on the screen
-// function fetchTasks() {
-//     fetch("http://localhost:3000/events")
-//         .then((res) => res.json())
-//         .then((data) => {
-//             console.log(data)
-//             data.forEach((user) => {
-//                 newTask.innerText += user.eventName;
-//                 console.log(newTask);
-//                 startDate.innerText += user.startDate;
-//                 console.log(startDate);
-//                 endDate.innerText += user.endDate;
-//             })
-//         })
-// }
-
-// ! invoking the loading of all tasks whenever the page is loaded
-// window.addEventListener('load', fetchTasks);
-// // <!-- <script>
-//   // Get all Events
-//   fetch("http://localhost:3000/events")
-//     .then((response) => response.json())
-//     .then((json) => console.log(json));
-
-// Create a new Event
-fetch("http://localhost:3000/events", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-    },
-    body: JSON.stringify({
-        eventName: newTask,
-        //  ! method to pick current date 
-        startDate: Date.now(),
-        endDate: endDate
-    }),
-})
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-
-//   // Delete an exist Event
-//   fetch("http://localhost:3000/events/1", {
-//     method: "DELETE",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Accept: "application/json",
-//     },
-//   })
-//     .then((response) => response.json())
-//     .then((json) => console.log(json));
-
-//   //   // Update an exist Event
-//   fetch("http://localhost:3000/events/2", {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Accept: "application/json",
-//     },
-//     body: JSON.stringify({
-//       eventName: "TEST-CHANGED",
-//       startDate: "1641790800000",
-//       endDate: "1641790800000",
-//     }),
-//   })
-//     .then((response) => response.json())
-//     .then((json) => console.log(json));
-// </script> -->
-
-// window.addEventListener('load', fetchTasks);
-addTask.addEventListener('submit', (e) => {
-    // ! prevents the page from reloading everytime a task is added
-    e.preventDefault()
-})
+// ! adding an eventlistener to laod the posts and call the function to fetch all the items in the lists
+window.addEventListener('load', fetchLists)
