@@ -12,6 +12,8 @@ function fetchLists() {
 
             // ! looping over the json file to dynamically create elements based on the post requirement for all the items in the list
             for (var i = 0; i < json.length; i++) {
+                // ! logging the ids of events 
+                console.log(`ids of events as follows: ${json[i].id}`)
                 // ! iniatilizing a row and defining elements
                 var row = `
                 <tr>
@@ -68,7 +70,19 @@ function addItems(e) {
                 table.innerHTML += row;
             }
         });
+
+    // ! calling the function to clear fields 
+    clearFields()
+    alert('A new todo has been added ');
 }
+
+// ! a function to clear input fields when the form is submitted
+function clearFields() {
+    newTask.value = "";
+    startDate.value = "";
+    endDate.value = "";
+}
+
 
 // ! deleting a post
 // * create a function that takes in an id

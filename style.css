@@ -12,6 +12,10 @@ body {
   overflow: hidden;
 }
 
+/* .container {
+    overflow-x: ;
+} */
+
 table {
   /* * removes borders of internal cells to give it more asthetic look */
   border-collapse: collapse;

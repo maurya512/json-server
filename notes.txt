@@ -1,0 +1,10 @@
+successfully reloads the page and renders all the items in the list in correct format
+can add items to the list and see real time results in the json file, console log screen on the dom as well. 
+css matches somewhat of the desired styling 
+
+Things that need to implemented 
+
+Need to fix the issue where added items are only visible after reloading the page. 
+Add Items button needs to be fixed in terms of positioning 
+Need to make the form responsive on all screen sizes 
+Implement the delete and edit route 
